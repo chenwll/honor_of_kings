@@ -32,20 +32,37 @@
         </el-tab-pane>
         <el-tab-pane label="技能">
           <el-button @click="model.skills.push({})"><i class="el-icon-plus"></i>添加技能</el-button>
-          <el-row type="flex" sytle="flex-wrap: wrap">
+          <el-row type="flex" sytle="flex-wrap：wrap" class="lineWrap">
             <el-col :md="12" v-for="(item,i) in model.skills" :key="i">
               <el-form-item label="名称">
-                <el-input></el-input>
+                <el-input v-model="item.name"></el-input>
               </el-form-item>
-              <el-form-item label="名称">
-                <el-input></el-input>
+              <el-form-item label="图标" label-width="120px">
+                <el-upload
+                    class="avatar-uploader"
+                    :action="$http.defaults.baseURL + '/upload'"
+                    :show-file-list="false"
+                    :on-success="res => $set(item,'icon',res.url)"
+                    :before-upload="beforeAvatarUpload">
+                  <img v-if="item.icon" :src="item.icon" class="avatar" alt="">
+                  <i v-else class="el-icon-plus avatar-uploader-icon"></i>
+                </el-upload>
               </el-form-item>
-              <el-form-item label="名称">
-                <el-input></el-input>
+              <el-form-item label="描述">
+                <el-input v-model="item.description" type="textarea"></el-input>
+              </el-form-item>
+              <el-form-item label="小提示">
+                <el-input v-model="item.tips" type="textarea"></el-input>
+              </el-form-item>
+              <el-form-item>
+                <el-button type="danger" @click="model.skills.splice(0,1)">删除</el-button>
               </el-form-item>
             </el-col>
           </el-row>
         </el-tab-pane>
+        <el-form-item>
+          <el-button type="primary" native-type="submit">保存</el-button>
+        </el-form-item>
       </el-tabs>
     </el-form>
   </div>
@@ -161,6 +178,9 @@ export default {
   width: 178px;
   height: 178px;
   display: block;
+}
+.lineWrap{
+  flex-wrap: wrap;
 }
 </style>
 

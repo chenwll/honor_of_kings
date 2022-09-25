@@ -3,6 +3,8 @@ const app = express()
 const cors = require('cors')
 const port = 3000
 
+// 设置密钥，但是应该放在环境变量中
+app.set('secret','12home34')
 app.use(cors());
 app.use(express.json())
 app.use('/uploads',express.static(__dirname+ '/uploads'))

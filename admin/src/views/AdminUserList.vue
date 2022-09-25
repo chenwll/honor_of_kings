@@ -1,38 +1,14 @@
 <template>
   <div class="about">
-    <h1>英雄列表</h1>
+    <h1>管理员列表</h1>
     <el-table
         :data="items"
         style="width: 100%">
-      <el-table-column
-          prop="_id"
-          label="Id"
-          width="220">
-      </el-table-column>
-      <el-table-column
-          prop="name"
-          label="英雄名称"
-          width="180">
-      </el-table-column>
-      <el-table-column
-          prop="avatar"
-          label="头像"
-          width="180">
+      <el-table-column prop="_id" label="Id" width="240"></el-table-column>
+      <el-table-column prop="title" label="标题"></el-table-column>
+      <el-table-column fixed="right" label="操作" width="180">
         <template slot-scope="scope">
-          <img :src="scope.row.avatar"  style="height:3rem">
-        </template>
-      </el-table-column>
-      <el-table-column
-          prop="title"
-          label="称号"
-          width="180">
-      </el-table-column>
-      <el-table-column
-          fixed="right"
-          label="操作"
-          width="100">
-        <template slot-scope="scope">
-          <el-button type="text" size="small" @click = "$router.push(`/heroes/edit/${scope.row._id}`)">编辑</el-button>
+          <el-button type="text" size="small" @click = "$router.push(`/admin_users/edit/${scope.row._id}`)">编辑</el-button>
           <el-button type="text" size="small" @click = "remove(scope.row)">删除</el-button>
         </template>
       </el-table-column>
@@ -42,7 +18,7 @@
 
 <script>
 export default {
-  name: "HeroEdit",
+  name: "AdminUserEdit",
   props:{
   },
   data(){
@@ -56,10 +32,8 @@ export default {
 
   methods:{
     async fetch(){
-      const res = await this.$http.get('/rest/heroes')
-      console.log(res,'res.data')
+      const res = await this.$http.get('/rest/admin_user')
       this.items = res.data;
-      console.log(this.items,'items')
     },
     async remove(row){
       this.$confirm(`是否要删除分类"${row.name}"`, '提示', {
@@ -67,7 +41,7 @@ export default {
           cancelButtonText: '取消',
           type: 'warning'
         }).then( async () => {
-          const res = await this.$http.delete(`/rest/heroes/${row._id}`)
+          const res = await this.$http.delete(`/rest/admin_user/${row._id}`)
           console.log(res,'delete');
           this.$message({
             type: 'success',
@@ -81,7 +55,6 @@ export default {
           });
         });
     }
-
   }
 }
 </script>
