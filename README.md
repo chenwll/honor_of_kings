@@ -27,3 +27,11 @@
 10.formData上传文件
 11.ftp查看前端日志
 12.拦截了响应没有返回res，导致一直没有数据
+13.错误处理函数
+14. vue.mixin
+15. 上传图片使用自带的ajax请求库，所以图片上传失败，没有传入token
+
+## web端
+box-sizing: border-box;为什么必须加这个
+flex-grow
+main表示主页面的框架

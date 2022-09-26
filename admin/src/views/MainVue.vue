@@ -1,7 +1,7 @@
 <template>
-  <el-container style="height: 500px; border: 1px solid #eee">
+  <el-container style="height: 100vh">
     <el-aside width="200px" style="background-color: rgb(238, 241, 246)">
-      <el-menu  router :default-openeds="['1']"  :default-active="$route.path">
+      <el-menu  router :default-openeds="open_list" unique-opened :default-active="$route.path">
         <el-submenu index="1">
           <template slot="title"><i class="el-icon-message"></i>内容管理</template>
           <el-menu-item-group>
@@ -20,6 +20,7 @@
             <el-menu-item index="/articles/list">文章列表</el-menu-item>
           </el-menu-item-group>
         </el-submenu>
+
         <el-submenu index="2">
           <template slot="title"><i class="el-icon-message"></i>运营管理</template>
           <el-menu-item-group>
@@ -28,6 +29,7 @@
             <el-menu-item index="/ads/list">广告位列表</el-menu-item>
           </el-menu-item-group>
         </el-submenu>
+
         <el-submenu index="3">
           <template slot="title"><i class="el-icon-message"></i>系统设置</template>
           <el-menu-item-group>
@@ -74,7 +76,8 @@ export default {
       address: '上海市普陀区金沙江路 1518 弄'
     };
     return {
-      tableData: Array(20).fill(item)
+      tableData: Array(20).fill(item),
+      open_list:["1"],
     };
   }
 }

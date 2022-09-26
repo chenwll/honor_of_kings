@@ -1,14 +1,19 @@
 import axios from 'axios'
 import Vue from 'vue'
+import router from "./router";
 
 const http = axios.create({
     baseURL:"http://localhost:3000/admin/api"
 })
 
 // 加请求头
-axios.interceptors.request.use(function (config) {
+http.interceptors.request.use(function (config) {
+    console.log('请求头')
     // Do something before request is sent
-    config.headers.Authorization = 'Bearer' + localStorage.token
+    console.log(localStorage.token,'token')
+    if(localStorage.token){
+        config.headers.Authorization = 'Bearer ' + localStorage.token
+    }
     return config
 }, function (error) {
     // Do something with request error
@@ -19,12 +24,17 @@ axios.interceptors.request.use(function (config) {
 http.interceptors.response.use(res => {
     return res
 }, err => {
-    console.log('拦截err')
+    console.log('拦截err',err)
     if(err.response.data.message){
         Vue.prototype.$message({
             type:'error',
             message:err.response.data.message
         })
     }
+
+    if(err.response.status === 401){
+        router.push('/login')
+    }
+    return Promise.reject(err);
 })
 export default http
