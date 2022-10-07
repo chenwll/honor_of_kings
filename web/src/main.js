@@ -1,7 +1,16 @@
 import Vue from 'vue'
 import App from './App.vue'
 import router from './router'
-import './style.scss'
+import '../src/assets/scss/style.scss'
+
+
+import VueAwesomeSwiper from 'vue-awesome-swiper'
+import 'swiper/css'
+import './assets/iconfont/iconfont.css'
+
+import CardComponent from "@/components/CardComponent";
+Vue.use(VueAwesomeSwiper, /* { default global options } */)
+Vue.component('m-card',CardComponent)
 
 Vue.config.productionTip = false
 

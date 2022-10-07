@@ -35,3 +35,9 @@
 box-sizing: border-box;为什么必须加这个
 flex-grow
 main表示主页面的框架
+flex:1立即下载
+jc-around分散对齐
+scss map-get
+一个方向上，margin-top和padding会重复吗
+justify-around justify-between区别
+sass中&的意思
