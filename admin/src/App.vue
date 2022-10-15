@@ -1,7 +1,7 @@
 <template>
   <div id="app">
 <!--    <img alt="Vue logo" src="./assets/logo.png">-->
-    <router-view />
+    <router-view :key="$router.path" />
 <!--    <HelloWorld msg="Welcome to Your Vue.js App"/>-->
   </div>
 </template>
