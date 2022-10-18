@@ -11,6 +11,7 @@ app.use('/uploads',express.static(__dirname+ '/uploads'))
 
 require('./plugins/db')(app);
 require('./routers/admin')(app);
+require('./routers/web')(app);
 
 app.listen(port, () => {
     console.log(`Example app listening on port ${port}`)
