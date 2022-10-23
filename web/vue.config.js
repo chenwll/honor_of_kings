@@ -1,3 +1,7 @@
 module.exports = {
-  transpileDependencies: true
+  outputDir: __dirname + '/../serve/web',
+  // publicPath: process.env.NODE_ENV === 'production'
+  //     ? '/'
+  //     : '/'
 }
+

@@ -18,6 +18,12 @@ new Vue({
 }).$mount('#app')
 
 Vue.mixin({
+  computed:{
+    uploadUrl(){
+      return this.$http.defaults.baseURL + '/upload'
+    }
+  },
+
   methods:{
     getAuthHeaders(){
       return {

@@ -24,7 +24,7 @@
           label="操作"
           width="100">
         <template slot-scope="scope">
-          <el-button type="text" size="small" @click = "$router.push(`/rest/categories/edit/${scope.row._id}`)">编辑</el-button>
+          <el-button type="text" size="small" @click = "$router.push(`/categories/edit/${scope.row._id}`)">编辑</el-button>
           <el-button type="text" size="small" @click = "remove(scope.row)">删除</el-button>
         </template>
       </el-table-column>
@@ -49,6 +49,7 @@ export default {
   methods:{
     async fetch(){
       const res = await this.$http.get('/rest/categories')
+      console.log(res.data)
       this.items = res.data;
     },
     async remove(row){

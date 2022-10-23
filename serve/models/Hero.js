@@ -2,6 +2,7 @@ const mongoose = require('mongoose')
 
 const schema = new mongoose.Schema({
     name:{type:String},
+    banner:{type:String},
     avatar:{type:String},
     title:{type:String},
     // 关联多个分类
